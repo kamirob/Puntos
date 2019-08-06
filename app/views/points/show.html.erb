@@ -1,0 +1,102 @@
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <%= image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135") %>  
+        </div>
+
+        <ul class="list-unstyled components">
+            <p class="dashboard"></p>
+             <li>
+                               
+            </li>
+            <li>
+               
+            </li>
+            <li>
+                             
+            </li>
+            
+        </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-align-justify"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+            <% if current_user%>
+              <li class="nav-item active">
+                  <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "btn btn-danger"%>
+              </li>
+            <% else %>
+              <li class="nav-item active">
+                  <%= link_to "Iniciar Sesión", new_user_session_path, class: "btn btn-success"%>
+              </li>    
+            <% end %>    
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container-all">
+        <h1><%= @point.name%></h1>
+        <div class="header-container">
+          <%= link_to 'Editar', edit_point_path(@point), class:'btn btn-info' %> 
+          <%= link_to 'Regresar', points_path, class:'btn btn-primary'%>
+        </div>
+
+        <h5>
+          <strong>Dirección:</strong>
+          <%= @point.address %>
+        </h5>
+
+        <h5>
+          <strong>VPN:</strong>
+          <%= @point.vpn %>
+        </h5>
+
+        <h5>
+          <strong>CO:</strong>
+          <%= @point.co %>
+        </h5>
+
+        <h5>
+          <strong>Anydesk:</strong>
+          <%= @point.anydesk %>
+        </h5>
+
+        <h5>
+          <strong>ISP:</strong>
+          <%= @point.isp %>
+        </h5>
+
+        
+      </div>  
+      <div class="dropdown-divider"></div>
+      <div class="equipments-container">
+        <h2>Equipos en punto:</h2>
+      </div>
+    </div> <!--Container end-->   
+  </div>  
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+</script>  

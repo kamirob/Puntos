@@ -1,0 +1,47 @@
+<%= form_with(model: point, local: true) do |form| %>
+  <% if @point.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(point.errors.count, "error") %> prohibited this point from being saved:</h2>
+
+      <ul>
+      <% point.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vpn %>
+    <%= form.text_field :vpn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :co %>
+    <%= form.text_field :co %>
+  </div>
+
+  <div class="field">
+    <%= form.label :anydesk %>
+    <%= form.text_field :anydesk %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isp %>
+    <%= form.text_field :isp %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
