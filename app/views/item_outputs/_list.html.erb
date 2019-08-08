@@ -1,0 +1,38 @@
+<div class="col-md-12">
+  <div class="header-container">
+    <h1>Puntos de venta</h1>
+    <%= link_to 'Nuevo Punto', new_point_path, class:"btn btn-danger"%>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-md">
+      <thead>
+        <tr>
+          <th>CO</th>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>VPN</th>
+          <th>Anydesk</th>
+          <th>ISP</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @points.each do |point| %>
+          <tr>
+            <td><%= point.co %></td>
+            <td><%= point.name %></td>
+            <td><%= point.address %></td>
+            <td><%= point.vpn %></td>
+            <td><%= point.anydesk %></td>
+            <td><%= point.isp %></td>
+            <td><%= link_to 'Ver', point, class:"btn btn-outline-primary" %></td>
+            <td><%= link_to 'Editar', edit_point_path(point), class:"btn btn-outline-info"%></td>
+            <td><%= link_to 'Eliminar', point, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>  

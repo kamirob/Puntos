@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item name:</strong>
+  <%= @item_output.item_name %>
+</p>
+
+<p>
+  <strong>Departure date:</strong>
+  <%= @item_output.departure_date %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @item_output.quantity %>
+</p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @item_output.point %>
+</p>
+
+<p>
+  <strong>Fixed asset:</strong>
+  <%= @item_output.fixed_asset %>
+</p>
+
+<%= link_to 'Edit', edit_item_output_path(@item_output) %> |
+<%= link_to 'Back', item_outputs_path %>
