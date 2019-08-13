@@ -22,19 +22,15 @@
                 </div>
             <% end %>
 
-            <div class="field">
-                <%= f.label :Item %>
-                <%= f.text_field :item_name %>
-            </div>
+            <select id="template-example">
+              <% @category_equipments.each do |category_equipments| %>
+                <option value="<%= category_equipments.id %>"><%= category_equipments.name %></option>
+              <% end %>
+            </select>
 
             <div class="field">
                 <%= f.label :Cantidad %>
                 <%= f.number_field :quantity %>
-            </div>
-
-            <div class="field">
-                <%= f.label :Destino %>
-                <%= f.text_field :point %>
             </div>
             
             <div class="field">
@@ -58,3 +54,10 @@
     </div>
   </div>
 </div>
+
+<script>
+  $("#template-example").select2({
+    theme: "bootstrap"
+  }); 
+  
+</script>

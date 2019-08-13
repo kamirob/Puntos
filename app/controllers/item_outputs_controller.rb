@@ -15,6 +15,9 @@ class ItemOutputsController < ApplicationController
   # GET /item_outputs/new
   def new
     @item_output = ItemOutput.new
+    @category_equipments = CategoryEquipment.all
+    @points = Point.all
+
     respond_to do |f|
       f.html
       f.js 
