@@ -15,9 +15,6 @@ class ItemOutputsController < ApplicationController
   # GET /item_outputs/new
   def new
     @item_output = ItemOutput.new
-    @category_equipments = CategoryEquipment.all
-    @points = Point.all
-
     respond_to do |f|
       f.html
       f.js 
@@ -78,6 +75,6 @@ class ItemOutputsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_output_params
-      params.require(:item_output).permit(:item_name, :departure_date, :quantity, :point, :fixed_asset)
+      params.require(:item_output).permit(:category_equipment_id, :departure_date, :quantity, :point_id, :fixed_asset)
     end
 end

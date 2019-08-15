@@ -72,9 +72,9 @@
             <tbody>
               <% @item_outputs.each do |item_output| %>
                 <tr>
-                  <td><%= item_output.item_name %></td>
+                  <td><%= item_output.category_equipment.name%></td>
                   <td><%= item_output.quantity %></td>
-                  <td><%= item_output.point %></td>
+                  <td><%= item_output.point.name%></td>
                   <td><%= item_output.fixed_asset %></td>
                   <td><%= item_output.departure_date %></td>
                   <td><%= link_to 'Ver', item_output, class:"btn btn-outline-primary" %></td>

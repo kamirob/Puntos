@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_07_221616) do
+ActiveRecord::Schema.define(version: 2019_08_15_220444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,10 @@ ActiveRecord::Schema.define(version: 2019_08_07_221616) do
     t.integer "fixed_asset"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "point_id"
+    t.bigint "category_equipment_id"
+    t.index ["category_equipment_id"], name: "index_item_outputs_on_category_equipment_id"
+    t.index ["point_id"], name: "index_item_outputs_on_point_id"
   end
 
   create_table "points", force: :cascade do |t|
@@ -62,4 +66,6 @@ ActiveRecord::Schema.define(version: 2019_08_07_221616) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "item_outputs", "category_equipments"
+  add_foreign_key "item_outputs", "points"
 end
