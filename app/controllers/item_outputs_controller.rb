@@ -4,7 +4,7 @@ class ItemOutputsController < ApplicationController
   # GET /item_outputs
   # GET /item_outputs.json
   def index
-    @item_outputs = ItemOutput.all
+    @item_outputs = ItemOutput.order(departure_date: :desc).page(params[:page])
   end
 
   # GET /item_outputs/1

@@ -7,11 +7,14 @@
 
         <ul class="list-unstyled components">
             <p class="dashboard"></p>
-            <li class="nav-item active">
-              <%= link_to "Categoria de Equipos", category_equipments_path%>
+            <li class="nav-item inactive">
+              <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
             </li>
             <li class="nav-item active">
-              <%= link_to "Salidas de bodega", item_outputs_path%>
+              <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
+            </li>
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
             </li>
             
         </ul>
@@ -51,7 +54,7 @@
         </div>
       </nav>
       <div class="container-all">
-        <h1>Puntos de venta</h1>
+        <h1>Puntos de Venta</h1>
         <div class="header-container">
       
             <%= link_to 'Descargar Excel', new_point_path, class:"btn btn-success"%>
@@ -83,9 +86,10 @@
                   <td><%= point.anydesk %></td>
                   <td><%= point.isp %></td>
                   <% if current_user %>
-                    <td><%= link_to 'Ver', point, class:"btn btn-outline-primary" %></td>
-                    <td><%= link_to 'Editar', edit_point_path(point), class:"btn btn-outline-info"%></td>
-                    <td><%= link_to 'Eliminar', point, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, point, class:"btn btn-outline-primary" %></td>
+                    <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_point_path(point), class:"btn btn-outline-info"%></td>
+            
+                    <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, point, class:"btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   <% end %>  
                 </tr>
               <% end %>
