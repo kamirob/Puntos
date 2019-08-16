@@ -17,14 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :serial %>
-    <%= form.text_field :serial %>
-  </div>
-
-  <div class="field">
-    <%= form.label :fixed_assets %>
-    <%= form.text_field :fixed_assets %>
-  </div>
+    <%= form.collection_select(:category_equipment_id, CategoryEquipment.all, :id, :name, prompt: "Seleccione una categoría") %>
+  </div> 
 
   <div class="actions">
     <%= form.submit %>

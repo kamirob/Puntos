@@ -1,6 +1,76 @@
-<h1>Editing Point</h1>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <%= image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135") %>  
+        </div>
 
-<%= render 'form', point: @point %>
+        <ul class="list-unstyled components">
+            <p class="dashboard"></p>
+            <li class="nav-item inactive">
+              <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
+            </li>
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
+            </li>
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
+            </li>
+            <% if current_user%>
+              <li class="nav-item active">
+                <%= link_to '<i class="fa fa-power-off"></i> Cerrar Sesión'.html_safe, destroy_user_session_path, method: :delete%>
+              </li>
+            <% end %>    
+            
+        </ul>
+    </nav>
 
-<%= link_to 'Show', @point %> |
-<%= link_to 'Back', points_path %>
+    <!-- Page Content Holder -->
+    <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-align-justify"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+            <% if current_user%>
+              <li class="nav-item active email-list">
+                <%= current_user.email%>
+              </li>
+            <% else %>  
+              <li class="nav-item active">
+                  <%= link_to "Iniciar Sesión", new_user_session_path, class: 'btn btn-success'%>
+              </li> 
+            <% end %>    
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container-all">
+
+        <%= render 'form', point: @point %>
+
+        <%= link_to 'Show', @point %> |
+        <%= link_to 'Back', points_path %>
+      </div>  
+    </div> 
+  </div>  
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+</script>

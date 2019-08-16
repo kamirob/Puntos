@@ -7,15 +7,23 @@
 
         <ul class="list-unstyled components">
             <p class="dashboard"></p>
-             <li>
-                               
+            <li class="nav-item inactive">
+              <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
             </li>
-            <li>
-               
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
             </li>
-            <li>
-                             
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-desktop"></i> Equipos'.html_safe, equipment_index_path, class: 'item-list'%>
             </li>
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
+            </li>
+            <% if current_user%>
+              <li class="nav-item active">
+                <%= link_to '<i class="fa fa-power-off"></i> Cerrar Sesión'.html_safe, destroy_user_session_path, method: :delete%>
+              </li>
+            <% end %>    
             
         </ul>
     </nav>
@@ -86,7 +94,7 @@
       </div>  
       <div class="dropdown-divider"></div>
       <div class="equipments-container">
-        <h2>Equipos en punto:</h2>
+        <h3>Equipos en punto:</h3>
       </div>
     </div> <!--Container end-->   
   </div>  

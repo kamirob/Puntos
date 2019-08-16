@@ -24,15 +24,13 @@
 
          
             <div class="field">
-              <%= f.label :Punto, class: "control-label" %><br>
               <%= f.collection_select(:point_id, Point.all, :id, :name, prompt: "Seleccione un punto") %>
-                <br><br>
             </div> 
+            
             <div class="field">
-              <%= f.label :Item, class: "control-label" %><br>
               <%= f.collection_select(:category_equipment_id, CategoryEquipment.all, :id, :name, prompt: "Seleccione un item") %>
-                <br><br>
             </div> 
+
             <div class="field">
                 <%= f.label :Cantidad %>
                 <%= f.number_field :quantity %>

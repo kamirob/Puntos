@@ -1,31 +1,100 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <%= image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135") %>  
+        </div>
 
-<h1>Equipment</h1>
+        <ul class="list-unstyled components">
+            <p class="dashboard"></p>
+            <li class="nav-item inactive">
+              <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
+            </li>
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
+            </li>
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-desktop"></i> Equipos'.html_safe, equipment_index_path, class: 'item-list'%>
+            </li>
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
+            </li>
+            <% if current_user%>
+              <li class="nav-item active">
+                <%= link_to '<i class="fa fa-power-off"></i> Cerrar Sesión'.html_safe, destroy_user_session_path, method: :delete%>
+              </li>
+            <% end %>    
+            
+        </ul>
+    </nav>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Serial</th>
-      <th>Fixed assets</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <!-- Page Content Holder -->
+    <div id="content">
 
-  <tbody>
-    <% @equipment.each do |equipment| %>
-      <tr>
-        <td><%= equipment.name %></td>
-        <td><%= equipment.serial %></td>
-        <td><%= equipment.fixed_assets %></td>
-        <td><%= link_to 'Show', equipment %></td>
-        <td><%= link_to 'Edit', edit_equipment_path(equipment) %></td>
-        <td><%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
 
-<br>
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-align-justify"></i>
+          </button>
 
-<%= link_to 'New Equipment', new_equipment_path %>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+            <% if current_user%>
+              <li class="nav-item active email-list">
+                <%= current_user.email%>
+              </li>
+            <% else %>  
+              <li class="nav-item active">
+                  <%= link_to "Iniciar Sesión", new_user_session_path, class: 'btn btn-success'%>
+              </li> 
+            <% end %>    
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container-all">
+
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Categoría</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @equipment.each do |equipment| %>
+              <tr>
+                <td><%= equipment.name %></td>
+                <td><%= equipment.category_equipment.name %></td>
+                <td><%= link_to 'Show', equipment %></td>
+                <td><%= link_to 'Edit', edit_equipment_path(equipment) %></td>
+                <td><%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+
+        <%= link_to 'New Equipment', new_equipment_path %>
+      </div>  
+    </div> 
+  </div>  
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+</script>  

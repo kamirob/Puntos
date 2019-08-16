@@ -14,8 +14,16 @@
               <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
             </li>
             <li class="nav-item active">
+              <%= link_to '<i class="fa fa-desktop"></i> Equipos'.html_safe, equipment_index_path, class: 'item-list'%>
+            </li>
+            <li class="nav-item active">
               <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
             </li>
+            <% if current_user%>
+              <li class="nav-item active">
+                <%= link_to '<i class="fa fa-power-off"></i> Cerrar Sesión'.html_safe, destroy_user_session_path, method: :delete%>
+              </li>
+            <% end %>    
             
         </ul>
     </nav>
@@ -37,14 +45,14 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
-            <% if current_user%>
-              <li class="nav-item active">
-                  <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "btn btn-danger"%>
+             <% if current_user%>
+              <li class="nav-item active email-list">
+                <%= current_user.email%>
               </li>
-            <% else %>
+            <% else %>  
               <li class="nav-item active">
-                  <%= link_to "Iniciar Sesión", new_user_session_path, class: "btn btn-success"%>
-              </li>    
+                  <%= link_to "Iniciar Sesión", new_user_session_path, class: 'btn btn-success'%>
+              </li> 
             <% end %>    
             </ul>
           </div>
