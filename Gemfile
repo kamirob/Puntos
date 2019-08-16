@@ -67,3 +67,4 @@ gem 'devise'
 gem 'bootstrap-modal-rails'
 gem 'popper_js'
 gem "select2-rails"
+gem 'kaminari'

@@ -4,7 +4,7 @@ class PointsController < ApplicationController
   # GET /points
   # GET /points.json
   def index
-    @points = Point.all
+    @points = Point.order(:name).page(params[:page])
   end
 
   # GET /points/1
