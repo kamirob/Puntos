@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root'admin#index'
   devise_for :users
   resources :points
+  resources :equipment_points
 end

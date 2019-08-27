@@ -28,7 +28,7 @@
             </div> 
             
             <div class="field">
-              <%= f.collection_select(:category_equipment_id, CategoryEquipment.all, :id, :name, prompt: "Seleccione un item") %>
+              <%= f.collection_select(:equipment_id, Equipment.all, :id, :name, prompt: "Seleccione un item") %>
             </div> 
 
             <div class="field">

@@ -1,0 +1,2 @@
+module EquipmentPointsHelper
+end

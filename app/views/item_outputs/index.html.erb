@@ -10,6 +10,9 @@
             <li class="nav-item inactive">
               <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
             </li>
+            <li class="nav-item inactive">
+              <%= link_to '<i class="fa fa-home"></i> Asignar Equipos'.html_safe, equipment_points_path, class: 'item-list'%>
+            </li>
             <li class="nav-item active">
               <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
             </li>
@@ -83,7 +86,7 @@
             <tbody>
               <% @item_outputs.each do |item_output| %>
                 <tr>
-                  <td><%= item_output.category_equipment.name%></td>
+                  <td><%= item_output.equipment.name%></td>
                   <td><%= item_output.quantity %></td>
                   <td><%= item_output.point.name%></td>
                   <td><%= item_output.fixed_asset %></td>

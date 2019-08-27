@@ -1,0 +1,11 @@
+        @equipment = Equipment.find(params[:equipment_point][:equipment_id])
+        @point = Point.find(params[:equipment_point][:point_id])
+
+         @equipment = Equipment.find(params[:equipment_point][:equipment_id])
+        @point = Point.find(params[:equipment_point][:point_id])
+
+        @equipment_point = @equipment.build(equipment_point_params)
+      
+        if equipment_point.save
+          redirect_to equipment_point.equipment
+        end

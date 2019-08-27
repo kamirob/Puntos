@@ -10,7 +10,7 @@ class PointsController < ApplicationController
   # GET /points/1
   # GET /points/1.json
   def show
- 
+    @equipment_point = EquipmentPoint.all    
   end
 
   # GET /points/new
@@ -21,6 +21,8 @@ class PointsController < ApplicationController
       f.js 
     end  
   end
+
+  
 
   # GET /points/1/edit
   def edit
@@ -35,11 +37,11 @@ class PointsController < ApplicationController
       if @point.save
         format.html { redirect_to @point, notice: 'Point was successfully created.' }
         format.json { render :show, status: :created, location: @point }
-        format.js
+        format.js 
       else
         format.html { render :new }
         format.json { render json: @point.errors, status: :unprocessable_entity }
-        format.js
+        format.js 
       end
     end
   end

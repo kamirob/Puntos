@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_16_222648) do
+ActiveRecord::Schema.define(version: 2019_08_26_204159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,22 @@ ActiveRecord::Schema.define(version: 2019_08_16_222648) do
 
   create_table "equipment", force: :cascade do |t|
     t.string "name"
-    t.string "serial"
-    t.string "fixed_assets"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_equipment_id"
     t.index ["category_equipment_id"], name: "index_equipment_on_category_equipment_id"
+  end
+
+  create_table "equipment_points", force: :cascade do |t|
+    t.bigint "point_id"
+    t.bigint "equipment_id"
+    t.integer "fixed_assets"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "serial"
+    t.string "brand"
+    t.index ["equipment_id"], name: "index_equipment_points_on_equipment_id"
+    t.index ["point_id"], name: "index_equipment_points_on_point_id"
   end
 
   create_table "item_outputs", force: :cascade do |t|
@@ -40,8 +50,8 @@ ActiveRecord::Schema.define(version: 2019_08_16_222648) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "point_id"
-    t.bigint "category_equipment_id"
-    t.index ["category_equipment_id"], name: "index_item_outputs_on_category_equipment_id"
+    t.bigint "equipment_id"
+    t.index ["equipment_id"], name: "index_item_outputs_on_equipment_id"
     t.index ["point_id"], name: "index_item_outputs_on_point_id"
   end
 
@@ -69,6 +79,8 @@ ActiveRecord::Schema.define(version: 2019_08_16_222648) do
   end
 
   add_foreign_key "equipment", "category_equipments"
-  add_foreign_key "item_outputs", "category_equipments"
+  add_foreign_key "equipment_points", "equipment"
+  add_foreign_key "equipment_points", "points"
+  add_foreign_key "item_outputs", "equipment"
   add_foreign_key "item_outputs", "points"
 end

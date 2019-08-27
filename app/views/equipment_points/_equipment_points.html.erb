@@ -62,52 +62,39 @@
         </div>
       </nav>
       <div class="container-all">
-        <h1>Puntos de Venta</h1>
-        <div class="header-container">
-            
-            <%= link_to 'Descargar Excel', new_point_path, class:"btn btn-success"%>
-            <% if current_user%>
-              <%= link_to 'Nuevo Punto', new_point_path, :remote => true, 'data-toggle' =>  "modal", 'data-target' => 'point-modal', class: 'btn btn-info'%>
-            <% end %>  
- 
+        <h1>Equipos por Punto</h1>
+        <div class="card new-comment">
+            <div class="card-body">
+            <%= form_for @equipment_points.build, remote: true do |f| %>
+              <div class="field">
+                  <%= f.collection_select(:equipment_id, Equipment.all, :id, :name, prompt: "Seleccione un equipo") %>
+              </div> 
+              <%= f.label :Serial%>
+              <div class="field">
+                <%= f.text_field :serial, class: "form-control" %>
+              </div>
+              <%= f.label :Marca%>
+              <div class="field">
+                <%= f.text_field :brand, class: "form-control" %>
+              </div>
+              <%= f.label :Activo_fijo%>
+              <div class="field">
+                <%= f.text_field :fixed_assets, class: "form-control" %>
+              </div>
+              <div class="field">
+                  <%= f.collection_select(:point_id, Point.all, :id, :name, prompt: "Seleccione un punto") %>
+              </div> 
+              <div class="modal-footer">
+                  <div class="actions">
+                      <%= f.submit 'Asignar', class:'btn btn-success'%>
+                  </div>
+              </div>
+            <% end %>
+            </div>
         </div>
-
-        <div class="table-responsive">
-          <table class="table table-md">
-            <thead>
-              <tr>
-                <th>CO</th>
-                <th>Nombre</th>
-                <th>Dirección</th>
-                <th>VPN</th>
-                <th>Anydesk</th>
-                <th>ISP</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-          
-            <tbody>
-              <% @points.each do |point| %>
-                <tr>
-                  <td><%= point.co %></td>
-                  <td><%= point.name %></td>
-                  <td><%= point.address %></td>
-                  <td><%= point.vpn %></td>
-                  <td><%= point.anydesk %></td>
-                  <td><%= point.isp %></td>
-                  <% if current_user %>
-                    <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, point, class:"btn btn-outline-primary" %></td>
-                    
-                    <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_point_path(point), class:"btn btn-outline-info"%></td>
-                  
-                  <% end %>  
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-          <%= paginate @points %>
-          <div id="point-modal" style="display:none;"></div>
-        </div>
+        <% if @equipment_points.empty? %>
+            <li class="list-group-item text-center">Aún no hay equipos asigandos a este punto de venta :(</li>
+        <% end %>  
       </div>  
     </div> 
   </div>  
@@ -120,4 +107,5 @@
             $(this).toggleClass('active');
         });
     });
-</script>
+</script>  
+        

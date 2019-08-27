@@ -1,0 +1,27 @@
+
+<div>
+    <div class="card-body">
+    <%= form_for @point.equipment_points.build, remote: true do |f| %>
+        <%= f.label :Activo_fijo%>
+        <div >
+        <%= f.text_field :fixed_assets %>
+        </div>
+        <div class="field">
+            <%= f.collection_select(:equipment_id, Equipment.all, :id, :name, prompt: "Seleccione un equipo") %>
+        </div> 
+        <div class="field">
+            <%= f.collection_select(:point_id, Point.all, :id, :name, prompt: "Seleccione un equipo") %>
+        </div> 
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <div class="actions">
+                <%= f.submit 'Crear', class:'btn btn-success'%>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>
+<% if @point.equipment_points.empty? %>
+    <li class="list-group-item text-center">Aún no hay equipos asigandos a este punto de venta :(</li>
+<% end %>  
+

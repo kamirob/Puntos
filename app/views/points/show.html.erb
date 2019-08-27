@@ -10,6 +10,9 @@
             <li class="nav-item inactive">
               <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
             </li>
+            <li class="nav-item inactive">
+              <%= link_to '<i class="fa fa-home"></i> Asignar Equipos'.html_safe, equipment_points_path, class: 'item-list'%>
+            </li>
             <li class="nav-item active">
               <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
             </li>
@@ -95,7 +98,40 @@
       <div class="dropdown-divider"></div>
       <div class="equipments-container">
         <h3>Equipos en punto:</h3>
+        <div class="row justify-content-center">
+          <% @equipment_point.each do |p_equipment| %>
+            <% if p_equipment.point_id == @point.id%>
+              <% if p_equipment.equipment_id == 1%>
+                <div class="col">
+                  <%= image_tag("monitor.png", class: "img-responsive", id: "navbar-logo", size: "120x120") %>  
+                </div>
+              <% elsif p_equipment.equipment_id == 2 %>
+                <div class="col">
+                  <%= image_tag("torre.png", class: "img-responsive", id: "navbar-logo", size: "120x120") %>  
+                </div>
+              <% elsif p_equipment.equipment_id == 3 %>
+                <div class="col">
+                  <%= image_tag("impresora.png", class: "img-responsive", id: "navbar-logo", size: "70x70") %>  
+                </div>
+              <% elsif p_equipment.equipment_id == 4 %>
+                <div class="col">
+                  <%= image_tag("cajon.png", class: "img-responsive", id: "navbar-logo", size: "140x120") %>  
+                </div>
+              <% elsif p_equipment.equipment_id == 5 %>
+                <div class="col">
+                  <%= image_tag("ups.png", class: "img-responsive", id: "navbar-logo", size: "60x70") %>  
+                </div>
+              <% elsif p_equipment.equipment_id == 6 %>
+                Todo En Uno
+              <% end %>
+                <div class="fixed-assets">
+                  Activo Fijo: <%= p_equipment.fixed_assets%>
+                </div>  
+            <% end %>
+          <% end %>
+        </div>  
       </div>
+        <!--<div id="add_equipment-modal" style="display:none;"></div>-->
     </div> <!--Container end-->   
   </div>  
 </div>

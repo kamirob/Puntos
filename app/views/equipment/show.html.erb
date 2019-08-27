@@ -5,15 +5,5 @@
   <%= @equipment.name %>
 </p>
 
-<p>
-  <strong>Serial:</strong>
-  <%= @equipment.serial %>
-</p>
-
-<p>
-  <strong>Fixed assets:</strong>
-  <%= @equipment.fixed_assets %>
-</p>
-
 <%= link_to 'Edit', edit_equipment_path(@equipment) %> |
 <%= link_to 'Back', equipment_index_path %>

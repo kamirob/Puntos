@@ -1,4 +1,4 @@
 class CategoryEquipment < ApplicationRecord
-    has_many :equipment
+    has_one :equipment
     has_many :item_outputs
 end

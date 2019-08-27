@@ -75,6 +75,6 @@ class ItemOutputsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_output_params
-      params.require(:item_output).permit(:category_equipment_id, :departure_date, :quantity, :point_id, :fixed_asset)
+      params.require(:item_output).permit(:equipment_id, :departure_date, :quantity, :point_id, :fixed_asset)
     end
 end

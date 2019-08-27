@@ -10,6 +10,9 @@
             <li class="nav-item inactive">
               <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
             </li>
+            <li class="nav-item inactive">
+              <%= link_to '<i class="fa fa-home"></i> Asignar Equipos'.html_safe, equipment_points_path, class: 'item-list'%>
+            </li>
             <li class="nav-item active">
               <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
             </li>
@@ -59,32 +62,37 @@
         </div>
       </nav>
       <div class="container-all">
+        <h1>Equipos</h1>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Categoría</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
+        <div class="header-container">
+            <%= link_to 'Descargar Excel', new_point_path, class:"btn btn-success"%>
+            <% if current_user%>
+              <%= link_to 'Nuevo Equipo', new_equipment_path, :remote => true, 'data-toggle' =>  "modal", 'data-target' => 'point-modal', class: 'btn btn-info'%>
+            <% end %>  
+        </div>
 
-          <tbody>
-            <% @equipment.each do |equipment| %>
+        <div class="table-responsive">
+          <table class="table table-md">
+            <thead>
               <tr>
-                <td><%= equipment.name %></td>
-                <td><%= equipment.category_equipment.name %></td>
-                <td><%= link_to 'Show', equipment %></td>
-                <td><%= link_to 'Edit', edit_equipment_path(equipment) %></td>
-                <td><%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th colspan="3"></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
 
-        <br>
-
-        <%= link_to 'New Equipment', new_equipment_path %>
+            <tbody>
+              <% @equipment.each do |equipment| %>
+                <tr>
+                  <td><%= equipment.name %></td>
+                  <td><%= equipment.category_equipment.name %></td>
+                  <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_equipment_path(equipment), class:"btn btn-outline-info" %></td>
+                  <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, equipment, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger"%></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>  
     </div> 
   </div>  
