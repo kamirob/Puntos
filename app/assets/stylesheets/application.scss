@@ -290,11 +290,12 @@ ul.ui-autocomplete{
 }
 
 .dropdown-divider{
-    margin-top: 3%;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 .equipments-container{
-    margin-top: 3%;
+    margin: 2em;
 }
 
 .email-list{
@@ -302,6 +303,15 @@ ul.ui-autocomplete{
     font-size: 18px;
 }
 
-.fixed-assets{
-    
+.title-page{
+    margin-bottom: 2em;
 }
+.card-header{
+    padding: 4px !important
+}
+
+.image-card-header{
+    font-size: 1.1em;
+    margin: 3px !important;
+}
+

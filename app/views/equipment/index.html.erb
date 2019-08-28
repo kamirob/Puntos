@@ -6,29 +6,32 @@
         </div>
 
         <ul class="list-unstyled components">
-            <p class="dashboard"></p>
-            <li class="nav-item inactive">
-              <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
-            </li>
-            <li class="nav-item inactive">
-              <%= link_to '<i class="fa fa-home"></i> Asignar Equipos'.html_safe, equipment_points_path, class: 'item-list'%>
-            </li>
-            <li class="nav-item active">
-              <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
-            </li>
-            <li class="nav-item active">
-              <%= link_to '<i class="fa fa-desktop"></i> Equipos'.html_safe, equipment_index_path, class: 'item-list'%>
-            </li>
-            <li class="nav-item active">
-              <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
-            </li>
-            <% if current_user%>
-              <li class="nav-item active">
-                <%= link_to '<i class="fa fa-power-off"></i> Cerrar Sesión'.html_safe, destroy_user_session_path, method: :delete%>
-              </li>
-            <% end %>    
-            
-        </ul>
+        <p class="dashboard"></p>
+        <li class="active">
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle text-menu">Puntos de Venta</a>
+          <ul class="collapse list-unstyled" id="homeSubmenu">
+            <li>
+                <%= link_to '<i class="fa fa-home"></i> Puntos'.html_safe, points_path, class: 'item-list'%>        
+            </li> 
+            <li>
+                <%= link_to '<i class="fa fa-plus"></i> Asignar Equipos'.html_safe, equipment_points_path, class: 'item-list'%>       
+            </li> 
+          </ul>
+        </li>
+
+        <li class="nav-item active">
+          <%= link_to '<i class="fa fa-desktop"></i> Equipos'.html_safe, equipment_index_path, class: 'item-list'%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
+        </li>
+        <% if current_user%>
+          <li class="nav-item active">
+            <%= link_to '<i class="fa fa-power-off"></i> Cerrar Sesión'.html_safe, destroy_user_session_path, method: :delete%>
+          </li>
+        <% end %>    
+        
+      </ul>
     </nav>
 
     <!-- Page Content Holder -->
