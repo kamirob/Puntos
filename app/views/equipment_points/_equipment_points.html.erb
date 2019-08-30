@@ -65,6 +65,7 @@
         </div>
       </nav>
       <div class="container-all">
+      <% if current_user%>
         <h1>Equipos por Punto</h1>
         <div class="card new-comment">
             <div class="card-body">
@@ -72,13 +73,13 @@
               <div class="field">
                   <%= f.collection_select(:equipment_id, Equipment.all, :id, :name, prompt: "Seleccione un equipo") %>
               </div> 
-              <%= f.label :Serial%>
-              <div class="field">
-                <%= f.text_field :serial, class: "form-control" %>
-              </div>
               <%= f.label :Marca%>
               <div class="field">
                 <%= f.text_field :brand, class: "form-control" %>
+              </div>
+              <%= f.label :Serial%>
+              <div class="field">
+                <%= f.text_field :serial, class: "form-control" %>
               </div>
               <%= f.label :Activo_fijo%>
               <div class="field">
@@ -98,6 +99,11 @@
         <% if @equipment_points.empty? %>
             <li class="list-group-item text-center">Aún no hay equipos asigandos a este punto de venta :(</li>
         <% end %>  
+      <% else %>  
+       <div class="card">
+       Lo sentimos, no has iniciado sesión
+       </div>
+      <% end %>
       </div>  
     </div> 
   </div>  

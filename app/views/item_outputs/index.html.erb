@@ -69,7 +69,9 @@
         <div class="header-container">
       
             <%= link_to 'Descargar Excel', new_point_path, class:"btn btn-success"%>
-            <%= link_to 'Nueva Salida', new_item_output_path, :remote => true, 'data-toggle' =>  "modal", 'data-target' => 'item_output-modal', class: 'btn btn-info'%>
+            <% if current_user%>
+              <%= link_to 'Nueva Salida', new_item_output_path, :remote => true, 'data-toggle' =>  "modal", 'data-target' => 'item_output-modal', class: 'btn btn-info'%>
+            <% end %>  
  
         </div>
 
@@ -94,8 +96,10 @@
                   <td><%= item_output.point.name%></td>
                   <td><%= item_output.fixed_asset %></td>
                   <td><%= item_output.departure_date %></td>
-                  <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, item_output, class:"btn btn-outline-primary" %></td>
-                  <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_item_output_path(item_output), class:"btn btn-outline-info" %></td>
+                  <% if current_user%>
+                    <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, item_output, class:"btn btn-outline-primary" %></td>
+                    <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_item_output_path(item_output), class:"btn btn-outline-info" %></td>
+                  <% end %>  
                 </tr>
               <% end %>
             </tbody>

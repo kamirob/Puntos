@@ -177,8 +177,35 @@
                 </div>  
               </div>
             <% elsif p_equipment.equipment_id == 6 %>
-              Todo En Uno
-              Activo Fijo: <%= p_equipment.fixed_assets%>
+
+              <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
+                <div class="card-header">
+                  <p class="image-card-header"><%= image_tag("monitor.png", class: "img-responsive", size: "40x40")%> Todo en Uno</p>
+                </div>  
+              
+                <div class="card-body">
+                  <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
+                  
+                  <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
+                  
+                  <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
+                </div>  
+              </div>
+            <% elsif p_equipment.equipment_id == 11 %>
+
+              <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
+                <div class="card-header">
+                  <p class="image-card-header"><%= image_tag("dvr.png", class: "img-responsive", size: "40x40")%> DVR</p>
+                </div>  
+              
+                <div class="card-body">
+                  <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
+                  
+                  <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
+                  
+                  <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
+                </div>  
+              </div>
             <% end %>
               
               <!--<% if p_equipment.serial and p_equipment.brand == ''%>

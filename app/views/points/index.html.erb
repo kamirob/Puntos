@@ -82,8 +82,10 @@
                 <th>CO</th>
                 <th>Nombre</th>
                 <th>Dirección</th>
-                <th>VPN</th>
-                <th>Anydesk</th>
+                <% if current_user%>
+                  <th>VPN</th>
+                  <th>Anydesk</th>
+                <% end %>  
                 <th>ISP</th>
                 <th colspan="3"></th>
               </tr>
@@ -95,8 +97,10 @@
                   <td><%= point.co %></td>
                   <td><%= point.name %></td>
                   <td><%= point.address %></td>
-                  <td><%= point.vpn %></td>
-                  <td><%= point.anydesk %></td>
+                  <% if current_user%>
+                    <td><%= point.vpn %></td>
+                    <td><%= point.anydesk %></td>
+                  <% end %>  
                   <td><%= point.isp %></td>
                   <% if current_user %>
                     <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, point, class:"btn btn-outline-primary" %></td>
