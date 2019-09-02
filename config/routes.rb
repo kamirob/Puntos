@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :suppliers
   resources :item_outputs
   resources :equipment
   resources :category_equipments

@@ -5,7 +5,7 @@
             <%= image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135") %>  
         </div>
 
-        <ul class="list-unstyled components">
+      <ul class="list-unstyled components">
         <p class="dashboard"></p>
         <li class="active">
           <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle text-menu">Puntos de Venta</a>
@@ -21,6 +21,9 @@
 
         <li class="nav-item active">
           <%= link_to '<i class="fa fa-desktop"></i> Equipos'.html_safe, equipment_index_path, class: 'item-list'%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to '<i class="fa fa-desktop"></i> Proveedores'.html_safe, suppliers_path, class: 'item-list'%>
         </li>
         <li class="nav-item active">
           <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
