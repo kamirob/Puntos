@@ -26,6 +26,9 @@
           <%= link_to '<i class="fa fa-desktop"></i> Proveedores'.html_safe, suppliers_path, class: 'item-list'%>
         </li>
         <li class="nav-item active">
+          <%= link_to '<i class="fa fa-external-link"></i> Entradas a Bodega'.html_safe , item_entries_path, class: 'item-list'%>
+        </li>
+        <li class="nav-item active">
           <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
         </li>
         <% if current_user%>

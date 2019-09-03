@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  unit_value: 
+  total_value: 
+  supplier: one
+  equipment: one
+
+two:
+  quantity: 1
+  unit_value: 
+  total_value: 
+  supplier: two
+  equipment: two

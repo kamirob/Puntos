@@ -71,55 +71,46 @@
         </div>
       </nav>
       <div class="container-all">
-        <h1>Puntos de Venta</h1>
+        <h1>Entradas a Bodega</h1>
         <div class="header-container">
             
             <%= link_to 'Descargar Excel', new_point_path, class:"btn btn-success"%>
             <% if current_user%>
-              <%= link_to 'Nuevo Punto', new_point_path, :remote => true, 'data-toggle' =>  "modal", 'data-target' => 'point-modal', class: 'btn btn-info'%>
+              <%= link_to 'Nueva Entrada', new_item_entry_path, :remote => true, 'data-toggle' =>  "modal", 'data-target' => 'entry-modal', class: 'btn btn-info'%>
             <% end %>  
  
         </div>
-
         <div class="table-responsive">
           <table class="table table-md">
             <thead>
               <tr>
-                <th>CO</th>
-                <th>Nombre</th>
-                <th>Dirección</th>
-                <% if current_user%>
-                  <th>VPN</th>
-                  <th>Anydesk</th>
-                <% end %>  
-                <th>ISP</th>
+                <th>Proveedor</th>
+                <th>Número Factura</th>
+                <th>Equipos</th>
+                <th>Cantidad</th>
+                <th>Valor Unitario</th>
+                <th>Valor Total</th>
                 <th colspan="3"></th>
               </tr>
             </thead>
-          
+
             <tbody>
-              <% @points.each do |point| %>
+              <% @item_entries.each do |item_entry| %>
                 <tr>
-                  <td><%= point.co %></td>
-                  <td><%= point.name %></td>
-                  <td><%= point.address %></td>
-                  <% if current_user%>
-                    <td><%= point.vpn %></td>
-                    <td><%= point.anydesk %></td>
-                  <% end %>  
-                  <td><%= point.isp %></td>
-                  <% if current_user %>
-                    <td><%= link_to '<i class="fa fa-eye"></i>'.html_safe, point, class:"btn btn-outline-primary" %></td>
-                    
-                    <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_point_path(point), class:"btn btn-outline-info"%></td>
-                  
-                  <% end %>  
+                  <td><%= item_entry.supplier.name %></td>
+                  <td><%= item_entry.invoice_number %></td>
+                  <td><%= item_entry.equipment.name %></td>
+                  <td><%= item_entry.quantity %></td>
+                  <td><%= item_entry.unit_value %></td>
+                  <td><%= item_entry.total_value %></td>
+                  <td><%= link_to 'Show', item_entry %></td>
+                  <td><%= link_to 'Edit', edit_item_entry_path(item_entry) %></td>
+                  <td><%= link_to 'Destroy', item_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
               <% end %>
             </tbody>
-          </table>
-          <%= paginate @points %>
-          <div id="point-modal" style="display:none;"></div>
+          </table>  
+          <div id="entry-modal" style="display:none;"></div>
         </div>
       </div>  
     </div> 
@@ -134,3 +125,4 @@
         });
     });
 </script>
+

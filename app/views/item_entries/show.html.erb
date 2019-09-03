@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @item_entry.quantity %>
+</p>
+
+<p>
+  <strong>Unit value:</strong>
+  <%= @item_entry.unit_value %>
+</p>
+
+<p>
+  <strong>Total value:</strong>
+  <%= @item_entry.total_value %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @item_entry.supplier %>
+</p>
+
+<p>
+  <strong>Equipment:</strong>
+  <%= @item_entry.equipment %>
+</p>
+
+<%= link_to 'Edit', edit_item_entry_path(@item_entry) %> |
+<%= link_to 'Back', item_entries_path %>
