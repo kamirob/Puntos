@@ -27,6 +27,13 @@ test:
   <<: *default
   database: Puntos_test
 
+#production:
+    #adapter: postgresql 
+    #encoding: unicode 
+    #database: puntos 
+    #pool: 5 
+    #username: puntos 
+    #password: P411.s4
 
 production:
   <<: *default
