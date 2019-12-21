@@ -70,7 +70,6 @@ gem 'select2-rails'
 gem 'kaminari'
 gem 'font-awesome-rails'
 
-
 #DEPLOY
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'

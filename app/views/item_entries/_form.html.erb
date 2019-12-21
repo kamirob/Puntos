@@ -1,0 +1,46 @@
+<%= form_with(model: item_entry, local: true) do |form| %>
+  <% if item_entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item_entry.errors.count, "error") %> prohibited this item_entry from being saved:</h2>
+
+      <ul>
+      <% item_entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= form.label :invoice_number %>
+    <%= form.number_field :invoice_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unit_value %>
+    <%= form.text_field :unit_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_value %>
+    <%= form.text_field :total_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :supplier_id %>
+    <%= form.text_field :supplier_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipment_id %>
+    <%= form.text_field :equipment_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

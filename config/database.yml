@@ -30,6 +30,6 @@ test:
 
 production:
   <<: *default
-  database: Puntos_production
-  username: Puntos
+  database: Puntos
+  username: puntos
   password: <%= ENV['PUNTOS_DATABASE_PASSWORD'] %>
