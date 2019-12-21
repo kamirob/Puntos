@@ -1,9 +1,9 @@
 <div class="wrapper">
   <!-- Sidebar Holder -->
-  <nav id="sidebar">
-    <div class="sidebar-header">
-        <%= image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135") %>  
-    </div>
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <%= image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135") %>  
+        </div>
 
       <ul class="list-unstyled components">
         <p class="dashboard"></p>
@@ -38,79 +38,76 @@
         <% end %>    
         
       </ul>
-    </div>  
-  </nav>
-
-  <!-- Page Content Holder -->
-  <div id="content">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-
-        <button type="button" id="sidebarCollapse" class="navbar-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa fa-align-justify"></i>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="nav navbar-nav ml-auto">
-          <% if current_user%>
-            <li class="nav-item active email-list">
-              <%= current_user.email%>
-            </li>
-          <% else %>  
-            <li class="nav-item active">
-                <%= link_to "Iniciar Sesión", new_user_session_path, class: 'btn btn-success'%>
-            </li> 
-          <% end %>    
-          </ul>
-        </div>
-      </div>
     </nav>
-    <div class="container-all">
-      <h1>Proveedores</h1>
+    <div id="content">
 
-      <div class="header-container">
-        <%= link_to 'Descargar Excel', new_point_path, class:"btn btn-success"%>
-        <% if current_user%>  
-          <%= link_to 'Nuevo Proveedor', new_supplier_path,  class: 'btn btn-info'%>
-        <% end %>  
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
 
-      <div class="table-responsive">
-        <table class="table table-md">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>NIT</th>
-              <th>Dirección</th>
-              <th>Teléfono</th>
-              <th>Correo Electrónico</th>
-              <th>Contácto</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+              <span></span>
+              <span></span>
+              <span></span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-align-justify"></i>
+          </button>
 
-          <tbody>
-            <% @suppliers.each do |supplier| %>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+            <% if current_user%>
+              <li class="nav-item active email-list">
+                <%= current_user.email%>
+              </li>
+            <% else %>  
+              <li class="nav-item active">
+                  <%= link_to "Iniciar Sesión", new_user_session_path, class: 'btn btn-success'%>
+              </li> 
+            <% end %>    
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container-all">
+        <h1>Proveedores</h1>
+
+        <div class="header-container">
+          <%= link_to 'Descargar Excel', new_point_path, class:"btn btn-success"%>
+          <% if current_user%>  
+            <%= link_to 'Nuevo Proveedor', new_supplier_path,  class: 'btn btn-info'%>
+          <% end %>  
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-md">
+            <thead>
               <tr>
-                <td><%= supplier.name %></td>
-                <td><%= supplier.nit %></td>
-                <td><%= supplier.address %></td>
-                <td><%= supplier.phone %></td>
-                <td><%= supplier.email %></td>
-                <td><%= supplier.contact_name %></td>
-                <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_supplier_path(supplier), class:"btn btn-outline-info" %></td>
-                <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, supplier, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %></td>
+                <th>Nombre</th>
+                <th>NIT</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Correo Electrónico</th>
+                <th>Contácto</th>
+                <th colspan="3"></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div> 
+            </thead>
+
+            <tbody>
+              <% @suppliers.each do |supplier| %>
+                <tr>
+                  <td><%= supplier.name %></td>
+                  <td><%= supplier.nit %></td>
+                  <td><%= supplier.address %></td>
+                  <td><%= supplier.phone %></td>
+                  <td><%= supplier.email %></td>
+                  <td><%= supplier.contact_name %></td>
+                  <td><%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_supplier_path(supplier), class:"btn btn-outline-info" %></td>
+                  <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, supplier, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div> 
     </div>  
   </div>  
 </div>

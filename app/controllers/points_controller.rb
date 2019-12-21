@@ -78,6 +78,6 @@ class PointsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def point_params
-      params.require(:point).permit(:name, :address, :vpn, :co, :anydesk, :isp)
+      params.require(:point).permit(:name, :address, :vpn, :co, :anydesk, :isp, :ip, :subnet_mask, :dns1, :dns2)
     end
 end

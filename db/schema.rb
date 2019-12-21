@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_233848) do
+ActiveRecord::Schema.define(version: 2019_12_18_195136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(version: 2019_09_02_233848) do
     t.string "brand"
     t.index ["equipment_id"], name: "index_equipment_points_on_equipment_id"
     t.index ["point_id"], name: "index_equipment_points_on_point_id"
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "item_entry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity"
+    t.index ["item_entry_id"], name: "index_inventories_on_item_entry_id"
   end
 
   create_table "item_entries", force: :cascade do |t|
@@ -77,6 +85,10 @@ ActiveRecord::Schema.define(version: 2019_09_02_233848) do
     t.string "isp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ip"
+    t.string "subnet_mask"
+    t.string "dns1"
+    t.string "dns2"
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -106,6 +118,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_233848) do
   add_foreign_key "equipment", "category_equipments"
   add_foreign_key "equipment_points", "equipment"
   add_foreign_key "equipment_points", "points"
+  add_foreign_key "inventories", "item_entries"
   add_foreign_key "item_entries", "equipment"
   add_foreign_key "item_entries", "suppliers"
   add_foreign_key "item_outputs", "equipment"
