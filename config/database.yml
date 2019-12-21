@@ -34,4 +34,8 @@ production:
     database: puntos 
     pool: 5 
     username: puntos 
+<<<<<<< HEAD
     password: P411.s4
+=======
+    password: P411.s4
+>>>>>>> 497649cc0c0b90b52c47b6e8231ba29d69e1ae76
