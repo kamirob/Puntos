@@ -29,6 +29,6 @@ test:
 
 production:
   <<: *default
-  database: Puntos
+  database: puntos
   username: puntos
   password: P411.s4

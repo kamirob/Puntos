@@ -20,6 +20,11 @@
     <%= form.collection_select(:category_equipment_id, CategoryEquipment.all, :id, :name, prompt: "Seleccione una categoría") %>
   </div> 
 
+  <div class="field">
+    <%= form.label :Imágen%>
+    <%= form.file_field :image%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
