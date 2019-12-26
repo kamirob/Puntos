@@ -132,110 +132,24 @@
           <div class="card-deck equipments-container">
             <% @equipment_point.each do |p_equipment| %>
               <% if p_equipment.point_id == @point.id%>
-                <% if p_equipment.equipment_id == 1%>
-
-                  <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
-                    <div class="card-header">
-                      <p class="image-card-header"><%= image_tag("monitor.png", class: "img-responsive", size: "40x40")%> Monitor</p>
-                    </div>  
-                  
+                
+                <div class="card-group">
+                  <div class="card text-center" style="width: 18rem;">
                     <div class="card-body">
-                      <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
-                      
-                      <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
-                      
-                      <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
-                    </div>  
+                      <h5 class="card-title"><%= p_equipment.equipment.name%></h5>
+                      <p class="card-text">
+                        <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
+                        
+                        <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
+                        
+                        <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted center">Última Actualización: <%= p_equipment.updated_at%></small>
+                    </div>
                   </div>
-
-                <% elsif p_equipment.equipment_id == 2 %>
-                  <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
-                    <div class="card-header">
-                      <p class="image-card-header"><%= image_tag("torre.png", class: "img-responsive", size: "40x40")%> Torre</p>
-                    </div>  
-                  
-                    <div class="card-body">
-                      <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
-                      
-                      <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
-                      
-                      <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
-                    </div>  
-                  </div>
-                <% elsif p_equipment.equipment_id == 3 %>
-                  <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
-                    <div class="card-header">
-                      <p class="image-card-header"><%= image_tag("impresora.png", class: "img-responsive", size: "40x40")%> Impresora </p>
-                    </div>  
-                  
-                    <div class="card-body">
-                      <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
-                      
-                      <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
-                      
-                      <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
-                    </div>  
-                  </div>
-
-                <% elsif p_equipment.equipment_id == 4 %>
-                    <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
-                    <div class="card-header">
-                      <p class="image-card-header"><%= image_tag("cajon.png", class: "img-responsive", size: "40x40")%> Cajón </p>
-                    </div>  
-                  
-                    <div class="card-body">
-                      <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
-                      
-                      <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
-                      
-                      <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
-                    </div>  
-                  </div>
-                <% elsif p_equipment.equipment_id == 5 %>
-                    <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
-                    <div class="card-header">
-                      <p class="image-card-header"><%= image_tag("ups.png", class: "img-responsive", size: "40x40")%> UPS </p>
-                    </div>  
-                  
-                    <div class="card-body">
-                      <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
-                      
-                      <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
-                      
-                      <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
-                    </div>  
-                  </div>
-                <% elsif p_equipment.equipment_id == 6 %>
-
-                  <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
-                    <div class="card-header">
-                      <p class="image-card-header"><%= image_tag("monitor.png", class: "img-responsive", size: "40x40")%> Todo en Uno</p>
-                    </div>  
-                  
-                    <div class="card-body">
-                      <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
-                      
-                      <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
-                      
-                      <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
-                    </div>  
-                  </div>
-                <% elsif p_equipment.equipment_id == 7 %>
-
-                  <div class="card text-white text-center bg-danger mb-2" style="max-width: 200px;">
-                    <div class="card-header">
-                      <p class="image-card-header"><%= image_tag("dvr.png", class: "img-responsive", size: "40x40")%> DVR</p>
-                    </div>  
-                  
-                    <div class="card-body">
-                      <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
-                      
-                      <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
-                      
-                      <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
-                    </div>  
-                  </div>
-                <% end %>
+                </div>
               <% end %>
             <% end %>
           </div>
@@ -253,4 +167,5 @@
             $(this).toggleClass('active');
         });
     });
+    
 </script>  

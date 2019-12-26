@@ -10,10 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *= require select2-bootstrap
+ *= require toastr
  */
 
 @import "bootstrap";
 @import "font-awesome";
+@import "toastr";
 @font-face {
     font-family: "Montreal-Serial-Regular";
     src: url(asset-path('Montreal-Serial-Regular.ttf')) format("truetype");
@@ -318,3 +320,52 @@ ul.ui-autocomplete{
 .more-info{
     margin-top: 3em;
 }
+
+.new_point{
+    margin: 1.5em;
+}
+
+.modal-content{
+    width: 100em; 
+}
+
+.field_with_errors .form-control {
+    border: 1px solid $red;
+}
+
+
+
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+    
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+

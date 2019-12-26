@@ -69,6 +69,9 @@ gem 'popper_js'
 gem 'select2-rails'
 gem 'kaminari'
 gem 'font-awesome-rails'
+gem 'toastr-rails'
+gem 'mini_magick'
+
 
 #DEPLOY
 gem 'capistrano', '~> 3.11'
