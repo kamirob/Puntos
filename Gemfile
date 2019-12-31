@@ -66,12 +66,11 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'bootstrap-modal-rails'
 gem 'popper_js'
-gem 'select2-rails'
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'toastr-rails'
 gem 'mini_magick'
-gem 'select2-rails'
 
 
 #DEPLOY
