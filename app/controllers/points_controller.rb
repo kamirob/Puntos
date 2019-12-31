@@ -1,6 +1,6 @@
 class PointsController < ApplicationController
   before_action :set_point, only: [:show, :edit, :update, :destroy]
-
+  respond_to :js, :json, :html
   # GET /points
   # GET /points.json
   def index
@@ -22,7 +22,14 @@ class PointsController < ApplicationController
     end  
   end
 
-  
+  def add_pv
+    if params[:name]
+      point = Point.where("LOWER(name) LIKE ?", "%#{params[:name]}%")
+      render json: point.map{|v| v.serializable_hash(only: [:id, :name]) }
+    else
+      render json: ["HOLA"]
+    end
+  end
 
   # GET /points/1/edit
   def edit

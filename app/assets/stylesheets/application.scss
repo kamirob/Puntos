@@ -9,6 +9,7 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
+ *= require select2
  *= require select2-bootstrap
  *= require toastr
  */
@@ -66,6 +67,7 @@ SIDEBAR STYLE
     color: #fff;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
     transform-origin: bottom left;
+    position: relative;
 }
 
 #sidebar.active {
@@ -369,3 +371,18 @@ ul.ui-autocomplete{
   transform: translateX(0);
 }
 
+.pagination{
+    justify-content: center;
+    margin-top: 1em;
+}
+.footer_content{
+    position: absolute;
+    justify-content: center;
+    max-width: 100%;
+    margin-left: 11px;
+    margin-right: 11px;
+    text-align: center;
+    font-size: small;
+    bottom: 0px;
+    color: #444 !important;
+}

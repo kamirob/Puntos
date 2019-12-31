@@ -71,6 +71,7 @@ gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'toastr-rails'
 gem 'mini_magick'
+gem 'select2-rails'
 
 
 #DEPLOY

@@ -76,9 +76,17 @@
         <div class="card new-comment">
             <div class="card-body">
             <%= form_for @equipment_points.build, remote: true do |f| %>
+      
               <div class="field">
-                  <%= f.collection_select(:equipment_id, Equipment.all, :id, :name, prompt: "Seleccione un equipo") %>
-              </div> 
+                <label>Punto De Venta</label>
+                <select class="charge_pv"></select>
+              <div>
+
+              <div class="field">
+                <label>Equipo</label>
+                <select class="charge_equipments"></select>
+              <div>
+
               <%= f.label :Marca%>
               <div class="field">
                 <%= f.text_field :brand, class: "form-control" %>
@@ -91,16 +99,14 @@
               <div class="field">
                 <%= f.text_field :fixed_assets, class: "form-control" %>
               </div>
-              <div class="field">
-                  <%= f.collection_select(:point_id, Point.all, :id, :name, prompt: "Seleccione un punto") %>
-              </div> 
+          
               <div class="modal-footer">
                   <div class="actions">
                       <%= f.submit 'Asignar', class:'btn btn-success'%>
                   </div>
               </div>
             <% end %>
-            </div>
+          </div>
         </div>
         <% if @equipment_points.empty? %>
             <li class="list-group-item text-center">Aún no hay equipos asigandos a este punto de venta :(</li>
@@ -116,13 +122,3 @@
     </div> 
   </div>  
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-            $(this).toggleClass('active');
-        });
-    });
-</script>  
-        
