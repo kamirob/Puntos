@@ -1,4 +1,4 @@
-<div id="myModal" class="modal fade" tabindex="-1" style="background-color: rgba(0, 0, 0, 0.9);" data-backdrop="false">
+<div id="myModal" class="modal fade" tabindex="-1" style="background-color: rgba(0, 0, 0, 0.7) ;" data-backdrop="false">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -95,7 +95,7 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
               <div class="actions">
-                  <%= f.submit 'Crear', class:'btn btn-success'%>
+                <button class="btn btn-primary" id="myFormSubmit" type="submit">Crear</button>
               </div>
             </div>
         <% end %>
@@ -103,3 +103,10 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  $('#myFormSubmit').click
+    $('#myModal').modal('hide');
+</script>
+

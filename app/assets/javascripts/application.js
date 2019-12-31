@@ -19,7 +19,7 @@
 //= require select2-full
 //= require bootstrap-sprockets
 //= require toastr
-//= require_tree.
+//= require main
 
 $(document).ready(function() {
     toastr.options = {
@@ -36,4 +36,6 @@ $(document).ready(function() {
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
+
+
 });

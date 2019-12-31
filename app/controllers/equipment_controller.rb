@@ -1,15 +1,24 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
-
+  respond_to :js, :json, :html
   # GET /equipment
   # GET /equipment.json
   def index
     @equipment = Equipment.all
+    respond_with @equipment
   end
 
+  def add_equipment_point
+    if params[:name]
+      equipment = Equipment.where("LOWER(name) LIKE ?", "%#{params[:name]}%")
+      render json: equipment.map{|v| v.serializable_hash(only: [:id, :name]) }
+    else
+      render json: ["HOLA"]
+    end
+  end
   # GET /equipment/1
   # GET /equipment/1.json
-  def show
+  def show  
   end
 
   # GET /equipment/new

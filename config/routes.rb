@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :inventories
   resources :item_entries
   resources :suppliers
@@ -9,4 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :points
   resources :equipment_points
+  get :add_equipment_point, to: "equipment#add_equipment_point", :defaults => { :format=> 'json'}
+  get :add_pv, to: "points#add_pv", :defaults => { :format=> 'json'}
+
 end
