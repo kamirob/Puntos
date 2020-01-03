@@ -2,7 +2,7 @@
     <!-- Sidebar Holder -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <%= image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135") %>  
+          <%= link_to(image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135"), root_path) %>  
         </div>
 
       <ul class="list-unstyled components">
@@ -75,28 +75,30 @@
         <h1>Equipos por Punto</h1>
         <div class="card new-comment">
             <div class="card-body">
-            <%= form_for @equipment_points.build, remote: true do |f| %>
+            <%= form_with(model: @equipment_point, local: true) do |f| %>
       
               <div class="field">
                 <label>Punto De Venta</label>
-                <select class="charge_pv"></select>
+                <select class="charge_pv" id="point_id" name="point_id"></select>
               <div>
 
-              <div class="field">
+              <div class="field field_equipment_points">
                 <label>Equipo</label>
-                <select class="charge_equipments"></select>
+                <select class="charge_equipments" id="equipment_id" name="equipment_id"></select>
               <div>
 
-              <%= f.label :Marca%>
-              <div class="field">
-                <%= f.text_field :brand, class: "form-control" %>
+              <div class="field_equipment_points">
+                <label>Marca del equipo</label>
+                <%= f.select :brand, EquipmentPoint.brands.keys.map,{ :prompt => 'Seleccione una'}, {:class => 'custom-select custom-select-sm'}%>
               </div>
-              <%= f.label :Serial%>
-              <div class="field">
+
+              <div class="field field_equipment_points">
+                <label>Serial del equipo</label>
                 <%= f.text_field :serial, class: "form-control" %>
               </div>
-              <%= f.label :Activo_fijo%>
-              <div class="field">
+              
+              <div class="field field_equipment_points">
+                <label>Activo Fijo</label>
                 <%= f.text_field :fixed_assets, class: "form-control" %>
               </div>
           
@@ -107,10 +109,7 @@
               </div>
             <% end %>
           </div>
-        </div>
-        <% if @equipment_points.empty? %>
-            <li class="list-group-item text-center">Aún no hay equipos asigandos a este punto de venta :(</li>
-        <% end %>  
+        </div> 
       <% else %>  
       <div class="card">
         <div class="card-body">

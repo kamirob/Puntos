@@ -5,6 +5,7 @@ class PointsController < ApplicationController
   # GET /points.json
   def index
     @points = Point.order(:co).page(params[:page])
+    @equipment_point = EquipmentPoint.all    
   end
 
   # GET /points/1
@@ -33,6 +34,7 @@ class PointsController < ApplicationController
 
   # GET /points/1/edit
   def edit
+    @equipment_point = EquipmentPoint.all    
   end
 
   # POST /points

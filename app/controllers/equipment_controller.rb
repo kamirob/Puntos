@@ -5,7 +5,7 @@ class EquipmentController < ApplicationController
   # GET /equipment.json
   def index
     @equipment = Equipment.all
-    respond_with @equipment
+    #respond_with @equipment
   end
 
   def add_equipment_point

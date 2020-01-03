@@ -2,70 +2,117 @@
 <div class="header-container">
   <%= link_to 'Regresar', points_path, class:'btn btn-primary'%>
 </div>
-<%= form_with(model: point, local: true) do |form| %>
-  <% if @point.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(point.errors.count, "error") %> prohibited this point from being saved:</h2>
-
-      <ul>
-      <% point.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+  <div class="card col-sm-5" >
+  <% @equipment_point.each do |p_equipment| %>
+    <% if p_equipment.point_id == @point.id%>
+      
+      <div class="card-group">
+        <div class="card text-center" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= p_equipment.equipment.name%></h5>
+            <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_equipment_point_path(@equipment_point), class:"btn btn-outline-info"%>
+            <p class="card-text">
+              <h6 class="content-card">Activo Fijo: <%= p_equipment.fixed_assets%></h6>
+              
+              <h6 class="content-card">Serial: <%= p_equipment.serial%></h6>
+              
+              <h6 class="content-card">Marca: <%= p_equipment.brand%></h6>
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted center">Última Actualización: <%= p_equipment.updated_at%></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-
-  <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :name %>
   </div>
+  <div class="card col-sm-5" >
+    <%= form_with(model: point, local: true) do |f| %>
+      <% if @point.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(point.errors.count, "error") %> prohibited this point from being saved:</h2>
 
-  <div class="field">
-    <%= form.label :Dirección %>
-    <%= form.text_field :address %>
-  </div>
+          <ul>
+          <% point.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label :VPN %>
-    <%= form.text_field :vpn %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :Nombre, class:"col-sm-2 col-form-label"%>
+        <div class="col-sm-10">
+          <%= f.text_field :name, class:"form-control"%>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :CO %>
-    <%= form.text_field :co %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :Dirección, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :address, class:"form-control"%>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :Anydesk %>
-    <%= form.text_field :anydesk %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :VPN, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :vpn, class:"form-control"%>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :Isp %>
-    <%= form.text_field :isp %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :CO, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :co, class:"form-control"%>
+        </div>
+      </div>
 
-   <div class="field">
-    <%= form.label :ip %>
-    <%= form.text_field :ip %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :Anydesk, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :anydesk, class:"form-control"%>
+        </div>
+      </div>
 
-   <div class="field">
-    <%= form.label :Máscara_De_Subred %>
-    <%= form.text_field :subnet_mask %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :ISP, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :isp, class:"form-control"%>
+        </div>
+      </div>
 
-   <div class="field">
-    <%= form.label :DNS1 %>
-    <%= form.text_field :dns1 %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :IP, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :ip, class:"form-control"%>
+        </div>
+      </div>
 
-   <div class="field">
-    <%= form.label :DNS2 %>
-    <%= form.text_field :dns2 %>
-  </div>
+      <div class="form-group row">
+        <%= f.label :Máscara, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :subnet_mask, class:"form-control"%>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <div class="form-group row">
+        <%= f.label :DNS1, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :dns1, class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :DNS2, class:"col-sm-2 col-form-label" %>
+        <div class="col-sm-10">
+          <%= f.text_field :dns2, class:"form-control"%>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>  

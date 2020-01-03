@@ -1,70 +1,187 @@
 <div class="wrapper">
     <!-- Sidebar Holder -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <%= image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135") %>  
-        </div>
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <%= link_to(image_tag("logo/logo2.png", class: "img-responsive", id: "navbar-logo", size: "180x135"), root_path) %>  
+    </div>
 
-        <ul class="list-unstyled components">
-            <p class="dashboard"></p>
-            <li class="nav-item inactive">
-              <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
-            </li>
-            <li class="nav-item active">
-              <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
-            </li>
-            <li class="nav-item active">
-              <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
-            </li>
-            <% if current_user%>
-              <li class="nav-item active">
-                <%= link_to '<i class="fa fa-power-off"></i> Cerrar Sesión'.html_safe, destroy_user_session_path, method: :delete%>
-              </li>
-            <% end %>    
-            
-        </ul>
-    </nav>
+    <ul class="list-unstyled components">
+      <p class="dashboard"></p>
+      <li class="nav-item inactive">
+        <%= link_to '<i class="fa fa-home"></i> Puntos de Venta'.html_safe, points_path, class: 'item-list'%>
+      </li>
+      <li class="nav-item active">
+        <%= link_to '<i class="fa fa-list"></i> Categoría de Equipos'.html_safe, category_equipments_path, class: 'item-list'%>
+      </li>
+      <li class="nav-item active">
+        <%= link_to '<i class="fa fa-external-link"></i> Salidas de Bodega'.html_safe , item_outputs_path, class: 'item-list'%>
+      </li>
+      <% if current_user%>
+        <li class="nav-item active">
+          <%= link_to '<i class="fa fa-power-off"></i> Cerrar Sesión'.html_safe, destroy_user_session_path, method: :delete%>
+        </li>
+      <% end %>       
+    </ul>
+  </nav>
 
     <!-- Page Content Holder -->
-    <div id="content">
+  <div id="content">
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
 
-          <button type="button" id="sidebarCollapse" class="navbar-btn">
-              <span></span>
-              <span></span>
-              <span></span>
-          </button>
-          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <i class="fa fa-align-justify"></i>
-          </button>
+        <button type="button" id="sidebarCollapse" class="navbar-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-align-justify"></i>
+        </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-            <% if current_user%>
-              <li class="nav-item active email-list">
-                <%= current_user.email%>
-              </li>
-            <% else %>  
-              <li class="nav-item active">
-                  <%= link_to "Iniciar Sesión", new_user_session_path, class: 'btn btn-success'%>
-              </li> 
-            <% end %>    
-            </ul>
-          </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav ml-auto">
+          <% if current_user%>
+            <li class="nav-item active email-list">
+              <%= current_user.email%>
+            </li>
+          <% else %>  
+            <li class="nav-item active">
+                <%= link_to "Iniciar Sesión", new_user_session_path, class: 'btn btn-success'%>
+            </li> 
+          <% end %>    
+          </ul>
         </div>
-      </nav>
-      <div class="container-all">
+      </div>
+    </nav>
+    <div class="container-all">
+      <h1>Editar</h1>
+      <div class="header-container">
+        <%= link_to 'Regresar', points_path, class:'btn btn-primary'%>
+      </div>
+      <div class="row">
+        <div class="col-sm-5" >
+          <%= form_for @point.equipment_points.build, local: true do |f| %>
+            <% @equipment_point.each do |p_equipment| %>
+              <% if p_equipment.point_id == @point.id%>
+              
+                <div class="card-group">
+                  <div class="card text-center" style="width: 20em;">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= p_equipment.equipment.name%></h5>
+                      <p class="card-text">
+                        <h6 class="content-card">Activo Fijo: <%= f.text_field :fixed_assets, class: "form-control" %></h6>
+                                                
+                        <h6 class="content-card">Serial: <%= f.text_field :serial, class: "form-control" %></h6>
+                        
+                        <h6 class="content-card">Marca:<%= f.select :brand, EquipmentPoint.brands.keys.map,{ :prompt => 'Seleccione una'}, {:class => 'custom-select custom-select-sm'}%></h6>
+                      </p>
+                    </div>
+                    <div class="card-footer">
+                      <small class="text-muted center">Última Actualización: <%= p_equipment.updated_at%></small>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+  
+        </div>
+        <div class="card col-sm-7" >
+          <div class="card-body">
+            <%= form_with(model: @point, local: true) do |f| %>
+              <% if @point.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(point.errors.count, "error") %> prohibited this point from being saved:</h2>
 
-        <%= render 'form', point: @point %>
+                  <ul>
+                  <% point.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
 
-        <%= link_to 'Show', @point %> |
-        <%= link_to 'Back', points_path %>
-      </div>  
-    </div> 
-  </div>  
-</div>
+              <div class="form-group row">
+                <%= f.label :Nombre, class:"col-sm-2 col-form-label"%>
+                <div class="col-sm-10">
+                  <%= f.text_field :name, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :Dirección, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :address, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :VPN, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :vpn, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :CO, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :co, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :Anydesk, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :anydesk, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :ISP, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :isp, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :IP, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :ip, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :Máscara, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :subnet_mask, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :DNS1, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :dns1, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :DNS2, class:"col-sm-2 col-form-label" %>
+                <div class="col-sm-10">
+                  <%= f.text_field :dns2, class:"form-control"%>
+                </div>
+              </div>
+
+              <div class="actions">
+                <button class="btn btn-primary" type="submit">Actualizar</button>
+              </div>
+            <% end %>
+          </div> <!--END CARD-BODY-->  
+        </div>  
+      </div> 
+    </div> <!-- END CONTAINER ALL--->
+  </div> <!-- END CONTENT --->  
+</div> <!-- END WRAPPER--->
 
 <script type="text/javascript">
     $(document).ready(function () {
