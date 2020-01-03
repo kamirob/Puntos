@@ -335,42 +335,6 @@ ul.ui-autocomplete{
     border: 1px solid $red;
 }
 
-
-
-@media (max-width: 768px) {
-    .carousel-inner .carousel-item > div {
-        display: none;
-    }
-    .carousel-inner .carousel-item > div:first-child {
-        display: block;
-    }
-}
-
-.carousel-inner .carousel-item.active,
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-    display: flex;
-}
-
-/* display 3 */
-@media (min-width: 768px) {
-    
-    .carousel-inner .carousel-item-right.active,
-    .carousel-inner .carousel-item-next {
-      transform: translateX(33.333%);
-    }
-    
-    .carousel-inner .carousel-item-left.active, 
-    .carousel-inner .carousel-item-prev {
-      transform: translateX(-33.333%);
-    }
-}
-
-.carousel-inner .carousel-item-right,
-.carousel-inner .carousel-item-left{ 
-  transform: translateX(0);
-}
-
 .pagination{
     justify-content: center;
     margin-top: 1em;
@@ -385,4 +349,13 @@ ul.ui-autocomplete{
     font-size: small;
     bottom: 0px;
     color: #444 !important;
+}
+
+#equipment_point_brand{
+    width: 100%;
+    text-transform: capitalize;
+}
+
+.field_equipment_points{
+    margin-top: 1em;
 }

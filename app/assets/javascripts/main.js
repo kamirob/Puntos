@@ -1,10 +1,6 @@
 $(document).ready(function(){
-  
-  $('#sidebarCollapse').on('click', function () {
-    $('#sidebar').toggleClass('active');
-    $(this).toggleClass('active');
-  });
 
+  ///////////////////////////// SHOW LIST EQUIPMENTS INTO SELECT//////////////////////
   $(".charge_equipments").select2({
     ajax: {
       url: "/add_equipment_point",
@@ -34,7 +30,8 @@ $(document).ready(function(){
     theme:"bootstrap",
     minimumInputLength: 2,
   });
-
+  ////////////////////////////////// END ////////////////////////////////////////////
+  ///////////////////////////// SHOW LIST POINTS INTO SELECT//////////////////////
   $(".charge_pv").select2({
     ajax: {
       url: "/add_pv",
@@ -64,9 +61,7 @@ $(document).ready(function(){
     theme:"bootstrap",
     minimumInputLength: 2,
   });
-
-  $('#myFormSubmit').click
-    $('#myModal').modal('hide');
+ ///////////////////////////////////// END ///////////////////////////////////////////////
 
  
 });  
